@@ -6,10 +6,10 @@ from django.contrib.auth import get_user_model
 from core import models
 
 
-# def sample_user(email='test@gmail.com', password='testpass'):
-#     """create sameple user"""
-#     return get_user_model().objects.create_user(email, password)
-#
+def sample_user(email='test@gmail.com', password='testpass'):
+    """helper function to create sameple user"""
+    return get_user_model().objects.create_user(email, password)
+
 
 class ModelTests(TestCase):
 
@@ -46,16 +46,16 @@ class ModelTests(TestCase):
 
         self.assertTrue(user.is_superuser)  # included in permissionsmixin
         self.assertTrue(user.is_staff)
-    #
-    # def test_tag_str(self):
-    #     """test the tag string representation"""
-    #     tag = models.Tag.objects.create(
-    #         user=sample_user(),
-    #         name='Vegan'
-    #     )
-    #
-    #     self.assertEqual(str(tag), tag.name)
-    #
+
+    def test_tag_str(self):
+        """test the tag string representation"""
+        tag = models.Tag.objects.create(
+            user=sample_user(),
+            name='Vegan'
+        )
+
+        self.assertEqual(str(tag), tag.name)
+
     # def test_ingredient_str(self):
     #     """test ingredient string representation"""
     #     ingredient = models.Ingredient.objects.create(
